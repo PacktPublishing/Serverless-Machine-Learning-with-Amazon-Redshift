@@ -218,6 +218,8 @@ SETTINGS (
   MAX_RUNTIME 9600
   );
 
+SHOW MODEL chapter6_supervisedclassification.cust_segmentation_model_ll;
+
 select 
  cast(sum(t1.match)as decimal(7,2)) as predicted_matches
 ,cast(sum(t1.nonmatch) as decimal(7,2)) as predicted_non_matches
@@ -236,7 +238,9 @@ from
     family_size,  
     var_1,  
     segmentation as actual_segmentation,
-    predict_cust_segment(id,gender,ever_married,age,graduated,profession,work_experience,spending_score,family_size,var_1) as predicted_segmentation,
+    chapter6_supervisedclassification.predict_cust_segment_ll
+(id,gender,ever_married,age,graduated,profession,work_experience,
+spending_score,family_size,var_1) as predicted_segmentation,
     case when actual_segmentation = predicted_segmentation then 1
       else 0 end as match,
   case when actual_segmentation <> predicted_segmentation then 1
@@ -247,17 +251,19 @@ from
 
 SELECT
 id, 
-predict_cust_segment(id,gender,ever_married,age,graduated,profession,work_experience,spending_score,family_size,var_1) as  segmentation 
-    FROM chapter6_supervisedclassification.cust_segmentation_test;
+chapter6_supervisedclassification.predict_cust_segment_ll
+(id,gender,ever_married,age,graduated,profession,work_experience,spending_score,family_size,var_1) as  segmentation 
+FROM chapter6_supervisedclassification.cust_segmentation_test;
 
 SELECT 
-    predict_cust_segment(id,gender,ever_married,age,graduated,profession,work_experience,spending_score,family_size,var_1) as  segmentation,
+    chapter6_supervisedclassification.predict_cust_segment_ll
+    (id,gender,ever_married,age,graduated,profession,work_experience,spending_score,family_size,var_1) as  segmentation,
     count(*) 
     FROM chapter6_supervisedclassification.cust_segmentation_test 
    group by 1;
 
 
-CREATE MODEL chapter6_supervisedclassification. cust_segmentation_model
+CREATE MODEL chapter6_supervisedclassification.cust_segmentation_model
 FROM (
 SELECT
     id, 
@@ -282,7 +288,7 @@ SETTINGS (
 );
 
 
-CREATE MODEL chapter6_supervisedclassification. cust_segmentation_model
+CREATE MODEL chapter6_supervisedclassification.cust_segmentation_model
 FROM (
 SELECT
     id, 
@@ -307,7 +313,3 @@ SETTINGS (
   S3_GARBAGE_COLLECT OFF,
   MAX_RUNTIME 9600
   );
-
-
-
-
