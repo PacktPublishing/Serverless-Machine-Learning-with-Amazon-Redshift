@@ -67,7 +67,7 @@ ticketholder character varying(500)
 DISTSTYLE AUTO;
 
 COPY chapter7_RegressionModel.sporting_event_ticket_info 
-FROM 's3://packt-serverless-ml-redshift/chapter07/ticket/' IAM_ROLE default FORMAT AS CSV DELIMITER ',' QUOTE '"' 
+FROM 's3://packt-serverless-ml-redshift/chapter07/ticketinfo' IAM_ROLE default FORMAT AS CSV DELIMITER ',' QUOTE '"' 
 REGION AS 'eu-west-1';
 
 
