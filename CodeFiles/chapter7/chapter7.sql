@@ -251,6 +251,7 @@ From chapter7_RegressionModel.sporting_event_ticket_info_validation
 group by 1  
 order by 5 desc ;
 
+set search_path to chapter7_regressionmodel;
 
 select json_table.report.explanations.kernel_shap.label0.global_shap_values from
  (select explain_model('predict_ticket_price_auto') as report) as json_table;
