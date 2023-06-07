@@ -13,4 +13,4 @@ do
    fi
 done
 echo 'creating new model ' 
-./create_model.sh
+./create_new_model.sh
