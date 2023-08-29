@@ -1,2 +1,2 @@
-# Serverless-Machine-Learning-with-Amazon-Redshift
-Serverless Machine Learning with Amazon Redshift, published by Packt 
+# Serverless Machine Learning with Amazon Redshift ML
+Serverless Machine Learning with Amazon Redshift ML, published by Packt 
