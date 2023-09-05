@@ -1,6 +1,6 @@
 # Serverless Machine Learning with Amazon Redshift ML
 
-<a href="https://www.packtpub.com/product/serverless-machine-learning-with-amazon-redshift-ml/9781804619285"><img src="https://content.packt.com/B18714/cover_image_small.jpeg" alt="Serverless Machine Learning with Amazon Redshift ML" height="256px" align="right"></a>
+<a href="https://www.packtpub.com/product/serverless-machine-learning-with-amazon-redshift-ml/9781804619285"><img src="https://content.packt.com/B19071/cover_image_small.png" alt="Serverless Machine Learning with Amazon Redshift ML" height="256px" align="right"></a>
 
 This is the code repository for [Serverless Machine Learning with Amazon Redshift ML](https://www.packtpub.com/product/serverless-machine-learning-with-amazon-redshift-ml/9781804619285), published by Packt.
 
