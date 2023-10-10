@@ -83,8 +83,7 @@ TARGET churn
 FUNCTION predict_customer_churn
 IAM_ROLE default
 SETTINGS (
-  S3_BUCKET 'serverlessmachinelearningwithredshift-<your account
-id>',
+  S3_BUCKET 'serverlessmachinelearningwithredshift-<your accountid>',
   MAX_RUNTIME 3600
 )
 ;
@@ -129,8 +128,7 @@ SELECT * FROM infer_data where churn!=predicted
 
 
 --running predictions
-SELECT area_code ||phone  accountid, replace(churn,'.','') as Actual_
-churn_class,
+SELECT area_code ||phone  accountid, replace(churn,'.','') as Actual_churn_class,
     chapter5_buildfirstmodel.predict_customer_churn(
       state,account_length,area_code, phone,intl_plan,
       vMail_plan, vMail_message, day_mins, day_calls,
@@ -185,10 +183,8 @@ SELECT *  FROM infer_data where churn!=predicted;
 
 
 --feature importance
-Select jsondata.featureimp.explanations.kernel_shap.label0.global_
-shap_values as value
-from ( select explain_model( 'chapter5_buildfirstmodel.customer_churn_
-model')as featureimp) jsondata ;
+Select jsondata.featureimp.explanations.kernel_shap.label0.global_shap_values as value
+from ( select explain_model( 'chapter5_buildfirstmodel.customer_churn_model')as featureimp) jsondata ;
 
 select t1.feature_imp, t1.value from 
 (
