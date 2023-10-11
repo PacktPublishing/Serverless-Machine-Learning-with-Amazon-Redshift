@@ -15,7 +15,7 @@ SORTKEY (s_suppkey);
 
 
 --Verify data loaded by Load data wizard using query editor v2
-Select * from chapter2.customer limit 10;
+Select * from chapter2.supplier limit 10;
 
 
 
