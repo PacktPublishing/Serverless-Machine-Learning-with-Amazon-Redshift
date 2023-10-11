@@ -42,8 +42,8 @@ distkey(l_orderkey) compound sortkey(l_orderkey,l_shipdate);
 
 --Load data using COPY command
 
-COPY chapter2.lineitem
-FROM 's3://packt-serverless-ml-redshift/chapter02/lineitem.parquet/'
+ COPY chapter2.lineitem
+FROM 's3://packt-serverless-ml-redshift/chapter02/lineitem.parquet'
 IAM_ROLE default
 REGION AS 'eu-west-1'
 FORMAT AS PARQUET;
@@ -102,6 +102,7 @@ print(query_id)
 load_data = f"""COPY chapter2.orders
 FROM '{S3_DATA_FILE}'
 IAM_ROLE default
+REGION AS 'eu-west-1'
 FORMAT AS PARQUET;"""
 
 
