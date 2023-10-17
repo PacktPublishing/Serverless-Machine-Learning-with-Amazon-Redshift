@@ -84,7 +84,7 @@ FUNCTION predict_customer_churn
 IAM_ROLE default
 SETTINGS (
   S3_BUCKET 'serverlessmachinelearningwithredshift-<your accountid>',
-  MAX_RUNTIME 3600
+  MAX_RUNTIME 9600
 )
 ;
 
@@ -186,95 +186,49 @@ SELECT *  FROM infer_data where churn!=predicted;
 Select jsondata.featureimp.explanations.kernel_shap.label0.global_shap_values as value
 from ( select explain_model( 'chapter5_buildfirstmodel.customer_churn_model')as featureimp) jsondata ;
 
-select t1.feature_imp, t1.value from 
-(
-Select 
-'account_length' as feature_imp,
-jsondata.featureimp.explanations.kernel_shap.label0.global_shap_values.account_length as value 
-from ( select explain_model( 'chapter5_buildfirstmodel.customer_churn_model')as featureimp) jsondata 
-union 
-select 'area_code' as feature_imp ,
-jsondata.featureimp.explanations.kernel_shap.label0.global_shap_values.area_code as value 
-from ( select explain_model( 'chapter5_buildfirstmodel.customer_churn_model')as featureimp) jsondata 
-union 
-select 'cust_serv_calls' as feature_imp ,
-jsondata.featureimp.explanations.kernel_shap.label0.global_shap_values.cust_serv_calls as value 
-from ( select explain_model( 'chapter5_buildfirstmodel.customer_churn_model')as featureimp) jsondata 
-union 
-select 'day_calls' as feature_imp ,
-jsondata.featureimp.explanations.kernel_shap.label0.global_shap_values.day_calls as value 
-from ( select explain_model( 'chapter5_buildfirstmodel.customer_churn_model')as featureimp) jsondata 
-union 
-select 'day_charge' as feature_imp ,
-jsondata.featureimp.explanations.kernel_shap.label0.global_shap_values.day_charge as value 
-from ( select explain_model( 'chapter5_buildfirstmodel.customer_churn_model')as featureimp) jsondata 
-union 
-select 'day_mins' as feature_imp ,
-jsondata.featureimp.explanations.kernel_shap.label0.global_shap_values.day_mins as value 
-from ( select explain_model( 'chapter5_buildfirstmodel.customer_churn_model')as featureimp) jsondata 
-union 
-select 'eve_calls' as feature_imp ,
-jsondata.featureimp.explanations.kernel_shap.label0.global_shap_values.eve_calls  as value 
-from ( select explain_model( 'chapter5_buildfirstmodel.customer_churn_model')as featureimp) jsondata 
-union 
-select 'eve_charge' as feature_imp ,
-jsondata.featureimp.explanations.kernel_shap.label0.global_shap_values.eve_charge  as value 
-from ( select explain_model( 'chapter5_buildfirstmodel.customer_churn_model')as featureimp) jsondata 
-union 
-select 'eve_mins' as feature_imp ,
-jsondata.featureimp.explanations.kernel_shap.label0.global_shap_values.eve_mins  as value 
-from ( select explain_model( 'chapter5_buildfirstmodel.customer_churn_model')as featureimp) jsondata 
-union 
-select 'intl_calls' as feature_imp ,
-jsondata.featureimp.explanations.kernel_shap.label0.global_shap_values.intl_calls   as value 
-from ( select explain_model( 'chapter5_buildfirstmodel.customer_churn_model')as featureimp) jsondata 
-union 
-select 'intl_charge' as feature_imp ,
-jsondata.featureimp.explanations.kernel_shap.label0.global_shap_values.intl_charge   as value 
-from ( select explain_model( 'chapter5_buildfirstmodel.customer_churn_model')as featureimp) jsondata 
-union 
-select 'intl_mins' as feature_imp ,
-jsondata.featureimp.explanations.kernel_shap.label0.global_shap_values.intl_mins    as value 
-from ( select explain_model( 'chapter5_buildfirstmodel.customer_churn_model')as featureimp) jsondata 
-union 
-select 'intl_plan' as feature_imp ,
-jsondata.featureimp.explanations.kernel_shap.label0.global_shap_values.intl_plan     as value 
-from ( select explain_model( 'chapter5_buildfirstmodel.customer_churn_model')as featureimp) jsondata 
-union 
-select 'inight_calls' as feature_imp ,
-jsondata.featureimp.explanations.kernel_shap.label0.global_shap_values.night_calls     as value 
-from ( select explain_model( 'chapter5_buildfirstmodel.customer_churn_model')as featureimp) jsondata 
-union 
-select 'night_charge' as feature_imp ,
-jsondata.featureimp.explanations.kernel_shap.label0.global_shap_values.night_charge    as value 
-from ( select explain_model( 'chapter5_buildfirstmodel.customer_churn_model')as featureimp) jsondata 
-union 
-select 'night_mins' as feature_imp ,
-jsondata.featureimp.explanations.kernel_shap.label0.global_shap_values.night_mins   as value 
-from ( select explain_model( 'chapter5_buildfirstmodel.customer_churn_model')as featureimp) jsondata 
-union 
-select 'phone' as feature_imp ,
-jsondata.featureimp.explanations.kernel_shap.label0.global_shap_values.phone   as value 
-from ( select explain_model( 'chapter5_buildfirstmodel.customer_churn_model')as featureimp) jsondata 
-union 
-select 'state' as feature_imp ,
-jsondata.featureimp.explanations.kernel_shap.label0.global_shap_values.state   as value 
-from ( select explain_model( 'chapter5_buildfirstmodel.customer_churn_model')as featureimp) jsondata 
-union 
-select 'total_charge' as feature_imp ,
-jsondata.featureimp.explanations.kernel_shap.label0.global_shap_values.total_charge   as value 
-from ( select explain_model( 'chapter5_buildfirstmodel.customer_churn_model')as featureimp) jsondata 
-union 
-select 'vmail_message' as feature_imp ,
-jsondata.featureimp.explanations.kernel_shap.label0.global_shap_values.vmail_message   as value 
-from ( select explain_model( 'chapter5_buildfirstmodel.customer_churn_model')as featureimp) jsondata 
-union 
-select 'vmail_plan' as feature_imp ,
-jsondata.featureimp.explanations.kernel_shap.label0.global_shap_values.vmail_plan  as value 
-from ( select explain_model( 'chapter5_buildfirstmodel.customer_churn_model')as featureimp) jsondata 
+--here is a simplified version of the formatting query from page 98 - credit Patrice Berube
 
-) t1
-order by value desc;
+ WITH featureimp as
+(
+Select
+f.explanations.kernel_shap.label0.global_shap_values.account_length,
+f.explanations.kernel_shap.label0.global_shap_values.area_code,
+f.explanations.kernel_shap.label0.global_shap_values.cust_serv_calls,
+f.explanations.kernel_shap.label0.global_shap_values.day_calls,
+f.explanations.kernel_shap.label0.global_shap_values.day_charge,
+f.explanations.kernel_shap.label0.global_shap_values.day_mins,
+f.explanations.kernel_shap.label0.global_shap_values.eve_calls,
+f.explanations.kernel_shap.label0.global_shap_values.eve_charge,
+f.explanations.kernel_shap.label0.global_shap_values.eve_mins,
+f.explanations.kernel_shap.label0.global_shap_values.intl_calls,
+f.explanations.kernel_shap.label0.global_shap_values.intl_charge,
+f.explanations.kernel_shap.label0.global_shap_values.intl_mins,
+f.explanations.kernel_shap.label0.global_shap_values.intl_plan,
+f.explanations.kernel_shap.label0.global_shap_values.night_calls,
+f.explanations.kernel_shap.label0.global_shap_values.night_charge,
+f.explanations.kernel_shap.label0.global_shap_values.night_mins,
+f.explanations.kernel_shap.label0.global_shap_values.phone,
+f.explanations.kernel_shap.label0.global_shap_values.state,
+f.explanations.kernel_shap.label0.global_shap_values.total_charge,
+f.explanations.kernel_shap.label0.global_shap_values.vmail_message,
+f.explanations.kernel_shap.label0.global_shap_values.vmail_plan
+from (select
+explain_model('chapter5_buildfirstmodel.customer_churn_model')
+as f
+)
+)
+Select *
+from featureimp
+UNPIVOT
+(list FOR feature IN
+(account_length, area_code, cust_serv_calls, day_calls,
+day_charge, day_mins, eve_calls, eve_charge, eve_mins,
+intl_calls, intl_charge, intl_mins, intl_plan, night_calls,
+night_charge, night_mins,phone, state, total_charge,
+vmail_message, vmail_plan
+)  
+)
+order by 2 desc;
 
 --model performance
 
