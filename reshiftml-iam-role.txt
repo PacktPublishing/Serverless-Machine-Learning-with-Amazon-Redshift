@@ -138,7 +138,7 @@
                 "StringEquals": {
                     "iam:PassedToService": [
                         "redshift.amazonaws.com",
-                        "sagemaker.amazonaws.com",
+                        "sagemaker.amazonaws.com"
                     ]
                 }
             }
