@@ -161,10 +161,8 @@ WITH infer_data AS (
               vMail_plan,
               vMail_message,
               day_mins,
-              day_calls,
-Evaluating model performance 17
- 
-day_charge,
+              day_calls,  
+              day_charge,
               total_charge,
               eve_mins,
               eve_calls,
