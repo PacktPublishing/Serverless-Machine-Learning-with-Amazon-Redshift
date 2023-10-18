@@ -39,18 +39,23 @@ group by 1;
 
 
 CREATE MODEL chapter9_deeplearning.predict_robot_direction
-FROM  (select 
-  US1 ,      US2 ,      US3 ,      US4 ,      US5 ,      US6 ,      US7 ,      US8 ,      US9 ,
-      US10 ,      US11 ,      US12 ,      US13 ,      US14 ,      US15 ,      US16 ,      US17 ,
-      US18 ,      US19 ,      US20 ,      US21 ,      US22 ,      US23 ,      US24 , DIRECTION
+FROM 
+ (select 
+  US1,US2,US3,US4,
+  US5,US6,US7 US8,
+  US9,US10,US11,US12,
+  US13,US14,US15,US16,
+  US17,US18,US19,US20,
+  US21,US22,US23,US24,
+  DIRECTION
   FROM chapter9_deeplearning.robot_navigation 
   Where MOD(id,5) !=0)
 TARGET DIRECTION	
 FUNCTION predict_robot_direction_fn
 IAM_ROLE default
 MODEL_TYPE MLP
-SETTINGS (s3_bucket 'replace-with-your-S3-bucket', 
-MAX_RUNTIME 1800); 
+SETTINGS (s3_bucket '<<your-S3-bucket>>', 
+MAX_RUNTIME 5400);
 
 SHOW MODEL chapter9_deeplearning.predict_robot_direction;
 
@@ -76,7 +81,7 @@ US1,US2,US3,US4,US5,US6,US7,US8,US9,US10,US11,US12,
 US13,US14,US15,US16,US17,US18,US19,US20,US21,US22,US23,US24
  ) as  predicted_direction
 from chapter9_deeplearning.robot_navigation
-where MOD(id,5) <> 0
+where MOD(id,5) = 0
 limit 10;
 
 
@@ -86,7 +91,7 @@ US1,US2,US3,US4,US5,US6,US7,US8,US9,US10,US11,US12,
 US13,US14,US15,US16,US17,US18,US19,US20,US21,US22,US23,US24
  ) as  predicted_direction, count(*)
 from chapter9_deeplearning.robot_navigation
-where MOD(id,5) <> 0
+where MOD(id,5) = 0
 group by 1;
 
 
