@@ -158,10 +158,8 @@ select chapter8_kmeans_clustering.get_housing_segment_k3 (median_income, latitud
  count(*) as count from chapter8_kmeans_clustering.housing_prices group by 1 order by 1;
 
 select avg(median_house_value) as avg_median_house_value,
-chapter8_kmeans_clustering
-.get_housing_segment_k3(median_income, latitude, longitude) as cluster
-from chapter8_kmeans_clustering
-.housing_prices
+chapter8_kmeans_clustering.get_housing_segment_k3(median_income, latitude, longitude) as cluster
+from chapter8_kmeans_clustering.housing_prices
 group by 2
 order by 1;
 
