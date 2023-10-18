@@ -42,7 +42,7 @@ CREATE MODEL chapter9_deeplearning.predict_robot_direction
 FROM 
  (select 
   US1,US2,US3,US4,
-  US5,US6,US7 US8,
+  US5,US6,US7,US8,
   US9,US10,US11,US12,
   US13,US14,US15,US16,
   US17,US18,US19,US20,
@@ -60,7 +60,7 @@ MAX_RUNTIME 5400);
 SHOW MODEL chapter9_deeplearning.predict_robot_direction;
 
 
--- predictions
+-- prediction query for model accuracy
 
 select correct, count(*)
 from 
@@ -75,6 +75,7 @@ where MOD(id,5) =0
 ) t1
 group by 1;
 
+-- prediction query to sample predicted direction
 
 select  id, chapter9_deeplearning.predict_robot_direction_fn (
 US1,US2,US3,US4,US5,US6,US7,US8,US9,US10,US11,US12,
@@ -84,7 +85,7 @@ from chapter9_deeplearning.robot_navigation
 where MOD(id,5) = 0
 limit 10;
 
-
+-- prediction query to show count of predicted directions
 
 select chapter9_deeplearning.predict_robot_direction_fn (
 US1,US2,US3,US4,US5,US6,US7,US8,US9,US10,US11,US12,
