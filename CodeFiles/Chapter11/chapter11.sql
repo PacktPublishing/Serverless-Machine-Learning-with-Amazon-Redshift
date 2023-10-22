@@ -1,6 +1,6 @@
 --Follow the instructions found here to create the Amazon
 SageMaker model:
-https://github.com/aws/amazon-sagemaker-examples/blob/main/introduction_to_amazon_algorithms/xgboost_abalone/xgboost_abalone.ipynb
+https://github.com/PacktPublishing/Serverless-Machine-Learning-with-Amazon-Redshift/blob/main/CodeFiles/Chapter11/xgboost_abalone.ipynb
 
  --For assistance on setting up the SageMaker notebook follow these instructions:
  https://docs.aws.amazon.com/sagemaker/latest/dg/gs-setup-working-env.html
