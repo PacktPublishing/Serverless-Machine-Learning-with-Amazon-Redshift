@@ -1,3 +1,15 @@
+--Follow the instructions found here to create the Amazon
+SageMaker model:
+https://github.com/aws/amazon-sagemaker-examples/blob/main/introduction_to_amazon_algorithms/xgboost_abalone/xgboost_abalone.ipynb
+
+ --For assistance on setting up the SageMaker notebook follow these instructions:
+ https://docs.aws.amazon.com/sagemaker/latest/dg/gs-setup-working-env.html
+
+
+#Create the schema
+ Create schema chapter11_byom;
+
+
 #Local Inference
 #setup the paramaters
 #provide your s3 bucket here
