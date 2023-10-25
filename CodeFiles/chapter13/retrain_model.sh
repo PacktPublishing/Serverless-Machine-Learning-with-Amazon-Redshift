@@ -1,1 +1,1 @@
-rsql -D redshiftuser --file=model_version.txt
+rsql -D redshiftuser --file=retrain_model.sql
