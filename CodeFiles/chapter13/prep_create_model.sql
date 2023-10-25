@@ -6,7 +6,7 @@ CREATE TABLE chapter13.model_info (
 )
 DISTSTYLE AUTO;
 
-copy  chapter13.model_info from 's3://970580199101-chapter13/create_model.txt' iam_role default format as csv delimiter '|' quote '"' blanksasnull emptyasnull fillrecord maxerror 50 region as 'us-east-1';
+copy  chapter13.model_info from 's3://<<your-s3-bucket>>/create_model.txt' iam_role default format as csv delimiter '|' quote '"' blanksasnull emptyasnull fillrecord maxerror 50 region as 'us-east-1';
 
 
 
